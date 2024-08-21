@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>Your Site Title</title>
+        <link>https://it-lthgc.github.io/IT-github-pages/</link>
+        <description>Your site description</description>
+        <item>
+            <title>Gist Content</title>
+            <link>http://www.yoursite.com/gist-url</link>
+            <description>1. Antras klausimas</description>
+            <pubDate>Wed, 21 Aug 2024 15:56:06 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
