@@ -4,13 +4,13 @@
         <title>TAP nagrinėjamas klausimas</title>
         <link>https://it-lthgc.github.io/IT-github-pages/</link>
         <description>Help guest in teams lobby to follow meeting agenda</description>
-        <atom:link href="20240822142215" rel="self" type="application/rss+xml" />
+        <atom:link href="20240822143142" rel="self" type="application/rss+xml" />
         <item>
             <title>Gist Content</title>
-            <link>https://gist.githubusercontent.com/IT-lthgc/a1ae1dd0d728cc9fda1922413fd9e313/raw</link>
-            <description>trys</description>
-            <pubDate>Thu, 22 Aug 2024 14:22:15 GMT</pubDate>
-            <guid>20240822142215</guid>
+            <link>https://it-lthgc.github.io/IT-github-pages/feed.xml</link>
+            <description>keturi</description>
+            <pubDate>Thu, 22 Aug 2024 14:31:42 GMT</pubDate>
+            <guid>20240822143142</guid>
         </item>
     </channel>
 </rss>
