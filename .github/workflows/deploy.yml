@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+Deploy GitHub Pages
 
 on:
   push:
@@ -13,10 +13,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Jekyll
       uses: helaili/jekyll-action@2.0.4
+      env:
+        JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
 
     - name: Build and deploy
       run: |
