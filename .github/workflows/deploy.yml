@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'feed.xml'
+      - 'index.html'
 
 permissions:
   contents: read
