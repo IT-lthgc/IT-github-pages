@@ -7,27 +7,32 @@ on:
     paths:
       - 'feed.xml'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+  
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ https://it-lthgc.github.io/IT-github-pages/ }}
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        node-version: '20'
-
-    - name: Set up Jekyll
-      uses: helaili/jekyll-action@2.0.4
-      env:
-        JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
-
-    - name: Build and deploy
-      run: |
-        bundle install
-        bundle exec jekyll build
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-        git add .
-        git commit -m 'Rebuild site'
-        git push
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
