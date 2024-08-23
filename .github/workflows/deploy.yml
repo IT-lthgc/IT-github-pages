@@ -20,7 +20,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ https://it-lthgc.github.io/IT-github-pages/ }}
+      url: ${{"https://it-lthgc.github.io/IT-github-pages/"}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
