@@ -14,6 +14,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        node-version: '20'
 
     - name: Set up Jekyll
       uses: helaili/jekyll-action@2.0.4
