@@ -26,13 +26,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: List directory contents
+        run: ls -la
+
+      - name: Verify feed.xml exists
+        run: |
+          if [ ! -f feed.xml ]; then
+            echo "feed.xml not found"
+            exit 1
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'feed.xml'
+          path: './feed.xml'
 
       - name: Deploy to GitHub Pages
         id: deployment
