@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+
+<html lang="en"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>RSS Feed Player</title> 
+
+</head> 
+
+<body> 
+
+    <h1>RSS Feed Player</h1> 
+
+    <div id="rss-feed"></div> 
+
+ 
+
+    <script> 
+
+        async function fetchRSS() { 
+
+            const response = await fetch('feed.xml'); 
+
+            const text = await response.text(); 
+
+            const parser = new DOMParser(); 
+
+            const xml = parser.parseFromString(text, 'application/xml'); 
+
+            const items = xml.querySelectorAll('item'); 
+
+            let html = '<ul>'; 
+
+            items.forEach(item => { 
+
+                const title = item.querySelector('title').textContent; 
+
+                const link = item.querySelector('link').textContent; 
+
+                html += `<li><a href="${link}">${title}</a></li>`; 
+
+            }); 
+
+            html += '</ul>'; 
+
+            document.getElementById('rss-feed').innerHTML = html; 
+
+        } 
+
+ 
+
+        fetchRSS(); 
+
+    </script> 
+
+</body> 
+
+</html> s here
