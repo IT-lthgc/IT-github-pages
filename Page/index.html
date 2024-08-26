@@ -14,39 +14,31 @@
         }
     </style>
     <script>
-        let lastCommitHash = '';
-
-        async function fetchLatestCommitHash() {
-            const response = await fetch('https://api.github.com/repos/IT-lthgc/IT-github-pages/commits/main');
-            const data = await response.json();
-            return data.sha;
-        }
-
         async function fetchRSS() {
-            const currentCommitHash = await fetchLatestCommitHash();
-            console.log('Current Commit Hash:', currentCommitHash);
-            console.log('Last Commit Hash:', lastCommitHash);
-            if (currentCommitHash !== lastCommitHash) {
-                lastCommitHash = currentCommitHash;
-                fetch('feed.xml')
-                    .then(response => response.text())
-                    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-                    .then(data => {
-                        const items = data.querySelectorAll("item");
-                        const container = document.getElementById("rss-feed");
-                        container.innerHTML = "";
-                        items.forEach(item => {
-                            const title = item.querySelector("title").textContent;
-                            const description = item.querySelector("description").textContent;
-                            const titleElement = document.createElement("h2");
-                            const descriptionElement = document.createElement("p");
-                            titleElement.textContent = title;
-                            descriptionElement.textContent = description;
-                            container.appendChild(titleElement);
-                            container.appendChild(descriptionElement);
-                        });
+            fetch('https://it-lthgc.github.io/IT-github-pages/docs/feed.xml')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+                .then(data => {
+                    const items = data.querySelectorAll("item");
+                    const container = document.getElementById("rss-feed");
+                    container.innerHTML = "";
+                    items.forEach(item => {
+                        const title = item.querySelector("title").textContent;
+                        const description = item.querySelector("description").textContent;
+                        const titleElement = document.createElement("h2");
+                        const descriptionElement = document.createElement("p");
+                        titleElement.textContent = title;
+                        descriptionElement.textContent = description;
+                        container.appendChild(titleElement);
+                        container.appendChild(descriptionElement);
                     });
-            }
+                })
+                .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
 
         setInterval(fetchRSS, 2000); // Check for updates every 2 seconds
