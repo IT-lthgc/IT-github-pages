@@ -15,13 +15,8 @@
     </style>
     <script>
         async function fetchRSS() {
-            fetch('https://it-lthgc.github.io/IT-github-pages/docs/feed.xml')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.text();
-                })
+            fetch('https://raw.githubusercontent.com/IT-lthgc/IT-github-pages/main/feed.xml')
+                .then(response => response.text())
                 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
                 .then(data => {
                     const items = data.querySelectorAll("item");
@@ -37,8 +32,7 @@
                         container.appendChild(titleElement);
                         container.appendChild(descriptionElement);
                     });
-                })
-                .catch(error => console.error('There has been a problem with your fetch operation:', error));
+                });
         }
 
         setInterval(fetchRSS, 2000); // Check for updates every 2 seconds
