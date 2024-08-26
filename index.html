@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS Feed Player</title>
+    <style>
+        #rss-feed {
+            border: 1px solid black;
+            width: 700px;
+            height: 200px;
+            overflow: auto;
+            padding: 10px;
+        }
+    </style>
     <script>
-        function fetchRSS() {
+        async function fetchRSS() {
             fetch('feed.xml')
                 .then(response => response.text())
                 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -15,3 +24,20 @@
                     container.innerHTML = "";
                     items.forEach(item => {
                         const title = item.querySelector("title").textContent;
+                        const description = item.querySelector("description").textContent;
+                        const titleElement = document.createElement("h2");
+                        const descriptionElement = document.createElement("p");
+                        titleElement.textContent = title;
+                        descriptionElement.textContent = description;
+                        container.appendChild(titleElement);
+                        container.appendChild(descriptionElement);
+                    });
+                });
+        }
+        setInterval(fetchRSS, 2000); // Check for updates every 2 seconds
+    </script>
+</head>
+<body>
+    <div id="rss-feed"></div>
+</body>
+</html>
