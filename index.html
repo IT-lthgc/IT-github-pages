@@ -15,24 +15,34 @@
     </style>
     <script>
         async function fetchRSS() {
-            fetch('https://raw.githubusercontent.com/IT-lthgc/IT-github-pages/main/feed.xml')
-                .then(response => response.text())
-                .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-                .then(data => {
-                    const items = data.querySelectorAll("item");
-                    const container = document.getElementById("rss-feed");
-                    container.innerHTML = "";
-                    items.forEach(item => {
-                        const title = item.querySelector("title").textContent;
-                        const description = item.querySelector("description").textContent;
-                        const titleElement = document.createElement("h2");
-                        const descriptionElement = document.createElement("p");
-                        titleElement.textContent = title;
-                        descriptionElement.textContent = description;
-                        container.appendChild(titleElement);
-                        container.appendChild(descriptionElement);
-                    });
+            fetch('https://api.github.com/repos/IT-lthgc/IT-github-pages/contents/feed.xml', {
+                headers: {
+                    'Accept': 'application/vnd.github.v3.raw'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(data => {
+                const items = data.querySelectorAll("item");
+                const container = document.getElementById("rss-feed");
+                container.innerHTML = "";
+                items.forEach(item => {
+                    const title = item.querySelector("title").textContent;
+                    const description = item.querySelector("description").textContent;
+                    const titleElement = document.createElement("h2");
+                    const descriptionElement = document.createElement("p");
+                    titleElement.textContent = title;
+                    descriptionElement.textContent = description;
+                    container.appendChild(titleElement);
+                    container.appendChild(descriptionElement);
                 });
+            })
+            .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
 
         setInterval(fetchRSS, 2000); // Check for updates every 2 seconds
