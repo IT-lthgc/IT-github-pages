@@ -4,13 +4,13 @@
         <title>TAP nagrinėjamas klausimas</title>
         <link>https://github.com/IT-lthgc/IT-github-pages.git</link>
         <description>Help guest in teams lobby to follow meeting agenda</description>
-        <atom:link href="https://it-lthgc.github.io/IT-github-pages/feed.xml?202408261143" rel="self" type="application/xml" />
+        <atom:link href="https://it-lthgc.github.io/IT-github-pages/feed.xml?202408261154" rel="self" type="application/xml" />
         <item>
-            <title>"Dabar nagrinėjamas klausimas"</title>
+            <title>Dabar nagrinėjamas klausimas</title>
             <link>https://it-lthgc.github.io/IT-github-pages/feed.xml</link>
-            <description>raudona merga</description>
-            <pubDate>Mon, 26 Aug 2024 11:43:28 GMT</pubDate>
-            <guid>https://it-lthgc.github.io/IT-github-pages/feed.xml?202408261143</guid>
+            <description>kam dabar gerai</description>
+            <pubDate>Mon, 26 Aug 2024 11:54:08 GMT</pubDate>
+            <guid>https://it-lthgc.github.io/IT-github-pages/feed.xml?202408261154</guid>
         </item>
     </channel>
 </rss>
