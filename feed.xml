@@ -4,13 +4,13 @@
         <title>TAP nagrinėjamas klausimas</title>
         <link>https://github.com/IT-lthgc/IT-github-pages.git</link>
         <description>Help guest in teams lobby to follow meeting agenda</description>
-        <atom:link href="https://it-lthgc.github.io/IT-github-pages/feed.xml?202408231505" rel="self" type="application/xml" />
+        <atom:link href="https://it-lthgc.github.io/IT-github-pages/feed.xml?202408260955" rel="self" type="application/xml" />
         <item>
-            <title>Nagrinėjamas klausimas</title>
+            <title>galimybių riba</title>
             <link>https://it-lthgc.github.io/IT-github-pages/feed.xml</link>
-            <description>2. Saulė ir jūra 3</description>
-            <pubDate>Fri, 23 Aug 2024 15:05:48 GMT</pubDate>
-            <guid>https://it-lthgc.github.io/IT-github-pages/feed.xml?202408231505</guid>
+            <description>galimybių riba</description>
+            <pubDate>Mon, 26 Aug 2024 09:55:32 GMT</pubDate>
+            <guid>https://it-lthgc.github.io/IT-github-pages/feed.xml?202408260955</guid>
         </item>
     </channel>
 </rss>
